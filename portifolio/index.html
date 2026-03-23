@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    <canvas id="canvas-bg"></canvas>
+</head>
+<body>
+    <header>
+        <h1 class="n">Meu Portfólio</h1>
+        <nav>
+            <ul>
+                <li><a href="#Sobre" class="escondido">Sobre mim</a></li>
+                <li><a href="#Contato" class="escondido">Contato</a></li>
+                <li><a href="#Projetos" class="escondido">Projetos</a></li>
+
+                <li>
+                    <button id="btn-tema" title="Trocar tema">
+                        <i class="fa-solid fa-sun"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="Sobre">
+            <h2>Sobre mim</h2>
+            <p>Olá! Meu nome é Luan, tenho 21 anos e atualmente estou no segundo período de Ciência da Computação. Tenho uma paixão enorme por programação e busco aprender cada dia mais sobre esta área.</p>
+            
+            <p>Ultimamente, estou focado em aprimorar meus conhecimentos em programação e integração de bancos de dados. Tenho muita facilidade com front-end, mas não me limito somente a isso.</p>
+            
+            <div class="skills-container">
+                <h3>Minhas Habilidades</h3>
+                <div class="skills-grid">
+                    <div class="skill-box" title="HTML5">
+                        <i class="fa-brands fa-html5"></i>
+                        <span>HTML5</span>
+                    </div>
+                    <div class="skill-box" title="CSS3">
+                        <i class="fa-brands fa-css3-alt"></i>
+                        <span>CSS3</span>
+                    </div>
+                    <div class="skill-box" title="JavaScript">
+                        <i class="fa-brands fa-js"></i>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="skill-box" title="Python">
+                        <i class="fa-brands fa-python"></i>
+                        <span>Python</span>
+                    </div>
+                    <div class="skill-box" title="Java">
+                        <i class="fa-brands fa-java"></i>
+                        <span>Java</span>
+                    </div>
+                    <div class="skill-box" title="C#">
+                        <i class="fa-solid fa-code"></i>
+                        <span>C#</span>
+                    </div>
+                    <div class="skill-box" title="PHP">
+                        <i class="fa-brands fa-php"></i>
+                        <span>PHP</span>
+                    </div>
+                     <div class="skill-box" title="MySQL">
+                        <i class="fa-solid fa-database"></i>
+                        <span>MySQL</span>
+                    </div>
+                </div>
+            </div>   
+        </section>
+    </main>
+    <h2>Alguns exemplos na pratica</h2>
+   <section class="cott escondido python-section">
+    <h2><i class="fa-solid fa-microchip"></i> System Real-Time Clock</h2>
+    
+    <div class="terminal-box">
+        <div id="relogio-py">00:00:00</div>
+        <p id="data-py">Iniciando kernel...</p>
+    </div>
+    <script type="py">
+        import asyncio
+        from datetime import datetime
+        from pyscript import document
+
+        async def iniciar_relogio():
+            while True:
+                agora = datetime.now()
+                # Formata a hora: 14:30:05
+                hora_formatada = agora.strftime("%H:%M:%S")
+                # Formata a data: 23 Março 2026
+                data_formatada = agora.strftime("%d/%m/%Y - %A")
+                
+                # Atualiza o HTML
+                document.querySelector("#relogio-py").innerText = hora_formatada
+                document.querySelector("#data-py").innerText = f"Status: Online | {data_formatada}"
+                
+                # Espera 1 segundo antes de atualizar de novo
+                await asyncio.sleep(1)
+
+        # Executa a função assíncrona
+        asyncio.ensure_future(iniciar_relogio())
+    </script>
+</section>
+
+<section class="cott escondido java-section">
+    <h2><i class="fa-brands fa-java" style="color: #f89820;"></i> Java Enterprise IDE</h2>
+
+    <div class="ide-window">
+        <div class="ide-header">
+            <div class="ide-controls">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+            </div>
+            <div class="ide-tab">
+                <i class="fa-brands fa-java"></i> BankSystem.java
+            </div>
+        </div>
+
+        <div class="ide-body">
+            <div class="line-numbers">
+                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span>
+            </div>
+            <div class="code-content">
+<pre><code><span class="keyword">public class</span> <span class="class-name">Bank</span> {
+    <span class="keyword">private double</span> balance = <span class="number">1000.0</span>;
+
+    <span class="keyword">public void</span> <span class="method">transaction</span>(<span class="type">double</span> value) {
+        <span class="keyword">this</span>.balance += value;
+        <span class="keyword">System</span>.out.println(<span class="string">"Processing..."</span>);
+    }
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="ide-actions">
+            <button class="btn-add" onclick="javaSim('add')"><i class="fa-solid fa-plus"></i> Adicionar</button>
+            <button class="btn-remove" onclick="javaSim('remove')"><i class="fa-solid fa-minus"></i> Retirar</button>
+            <button class="btn-reset" onclick="javaSim('reset')"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+        </div>
+
+        <div class="ide-terminal">
+            <div class="terminal-tab">Terminal</div>
+            <div id="java-output" class="terminal-text">
+                <span class="path">C:\Users\Luan\Project></span> java BankSystem.java
+                <br>> System Ready. Saldo: R$ 1000.00
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <main>
+<section id="Projetos">
+    <h2>Projetos</h2>
+    <p>Aqui estão alguns dos meus projetos mais recentes:</p>
+
+    <h2>Projeto 1</h2>
+    <p>Este é meu projeto para uma empresa de rastreamento</p>
+    <h3>Quais linguagens utilizei?</h3>
+    <p>Neste projeto foi utilizado para o front-end, HTML, CSS e JavaScript.</p>
+    <p>Agora para o back-end utilizei PHP e MySQL.</p>
+
+    <img src="imagens/imagenProj.jpeg" alt="Imagem do Projeto" class="project-image">
+    <a href="projeto/index.html" class="btn" target="_blank">Ver Projeto</a>
+    
+
+    <h2>Projeto 2</h2>
+    <p>Este é o projeto deste portifolio que você está vendo!</p>
+    <h3>Quais linguagens utilizei?</h3>
+    <p>Neste projeto foi utilizado para o front-end, HTML, CSS, JavaScript e Python.</p>
+    <img src="imagens/imagemProj2.jpeg" alt="Imagem do Projeto" class="project-image">
+
+</section>
+    </main>
+    <main>
+        
+        <section class="cott" id="Contato">
+            <h2>Contato</h2>
+            <p>Você pode me encontrar nos seguintes canais:</p>
+            <ul>
+    <li>
+        <a href="mailto:yatoluan2@gmail.com" class="btn">
+            <i class="fa-solid fa-envelope"></i> Email
+        </a>
+    </li>
+    <li>
+        <a href="https://linkedin.com/in/luan-vitor" target="_blank" class="btn">
+            <i class="fa-brands fa-linkedin"></i> LinkedIn
+        </a>
+    </li>
+    <li>
+        <a href="https://github.com/y4tin" target="_blank" class="btn">
+            <i class="fa-brands fa-github"></i> GitHub
+        </a>
+    </li>
+    <li>
+        <a href="https://wa.me/553599873061" target="_blank" class="btn">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+        </a>
+    </li>
+</ul>
+        </section>
+    </main>
+</body>
+</html>
